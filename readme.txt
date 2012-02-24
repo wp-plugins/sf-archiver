@@ -1,10 +1,10 @@
 === SF Archiver ===
-Contributors: Grégory Viguier
+Contributors: ScreenFeedFr
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=UBY2MY2J4YB7J&item_number=Snipets
 Tags: content, archive, post types
 Requires at least: 3.3
 Tested up to: 3.3.1
-Stable tag: 1.0
+Stable tag: trunk
 License: GPLv3
 
 A simple way to display archive pages for your custom post types
