@@ -1,6 +1,6 @@
 === SF Archiver ===
 Contributors: GregLone
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=UBY2MY2J4YB7J&item_number=Snipets
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=UBY2MY2J4YB7J&item_number=SF-Archiver
 Tags: content, archive, post types
 Requires at least: 3.3
 Tested up to: 3.3.1
