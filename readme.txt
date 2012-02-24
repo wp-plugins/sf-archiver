@@ -1,5 +1,5 @@
 === SF Archiver ===
-Contributors: greglone
+Contributors: GregLone
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=UBY2MY2J4YB7J&item_number=Snipets
 Tags: content, archive, post types
 Requires at least: 3.3
@@ -40,7 +40,7 @@ Eventually, check out [my blog](http://www.screenfeed.fr/archi/) for more infos 
 == Changelog ==
 
 = 1.0 =
-* 02/22/2012
+* 2012/02/24
 * First public release
 
 == Upgrade Notice ==
