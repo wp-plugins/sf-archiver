@@ -1,5 +1,5 @@
 === SF Archiver ===
-Contributors: ScreenFeedFr
+Contributors: greglone
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=UBY2MY2J4YB7J&item_number=Snipets
 Tags: content, archive, post types
 Requires at least: 3.3
