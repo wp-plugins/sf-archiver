@@ -25,7 +25,7 @@ You can also change the slugs in the url, create an RSS feed link, customize the
 2. Upload SF Archiver folder to your *"/wp-content/plugins/"* directory.
 3. Activate the plugin from the "Plugins" page.
 4. Go to *Settings* > *SF Archiver* and do your stuff.
-5. Go to *Appearence* > *Menus* and add the links to your menus.
+5. Go to *Appearance* > *Menus* and add the links to your menus.
 
 == Frequently Asked Questions ==
 = Why some of my custom post types don't appear in the settings page? =
