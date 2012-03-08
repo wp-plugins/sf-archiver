@@ -3,7 +3,7 @@
 /* Settings for the administration page */
 add_action( 'admin_init', 'w3p_acpt_register_settings' );
 function w3p_acpt_register_settings() {
-	register_setting( 'w3p-acpt-settings', '_w3p_acpt', 'w3p_acpt_satanize' );
+	register_setting( 'w3p-acpt-settings', '_w3p_acpt', 'w3p_acpt_sanitize' );
 }
 
 
@@ -131,8 +131,8 @@ function w3p_acpt_settings_page() {
 }
 
 
-/* Satanize options */
-function w3p_acpt_satanize($options) {
+/* Sanitize options */
+function w3p_acpt_sanitize($options) {
 	if ( isset($options['delete_options']) && (int) $options['delete_options'] == 1 )
 		return;
 
@@ -208,7 +208,7 @@ function w3p_acpt_contextual_help($help, $screen_id, $screen) {
 
 	$txt4 = '<p>'.__('You can even specify a new slug for the archive page or the single pages.', W3P_ACPT_DOMAIN).'</p>'.
 			'<p>'.__("Hint: you can use sub-slugs like &#8217;sub-slug/slug&#8217;, &#8217;collections/summer/tee-shirts&#8217;...", W3P_ACPT_DOMAIN).'</p>'.
-			'<p>'.__("Don&#8217;t forget that the RSS url change at the same time, and the menu link does&#8217;t update by itself.", W3P_ACPT_DOMAIN).'</p>';
+			'<p>'.__("Don&#8217;t forget that the RSS url change at the same time.", W3P_ACPT_DOMAIN).'</p>';
 	$helpArr[] = array(
 		'id'		=> 'slugs',
 		'title'		=> __('Slugs', W3P_ACPT_DOMAIN),
@@ -223,8 +223,7 @@ function w3p_acpt_contextual_help($help, $screen_id, $screen) {
 		'content'	=> $txt5
 	);
 
-	$txt6 = '<p>'.sprintf(__('Go to Appearance -> %s, look for the box called &#171;&#160;Post types&#160;&#187;, add your custom post type to your menu :)', W3P_ACPT_DOMAIN), '<a href="'.admin_url('nav-menus.php').'">'.__('Menus').'</a>').'</p>'.
-			'<p>'.__("Don&#8217;t forget to change your menu link if you change your archive slug (delete the link in the menu and add it again).", W3P_ACPT_DOMAIN).'</p>';
+	$txt6 = '<p>'.sprintf(__('Go to Appearance -> %s, look for the box called &#171;&#160;Post types&#160;&#187;, add your custom post type to your menu :)', W3P_ACPT_DOMAIN), '<a href="'.admin_url('nav-menus.php').'">'.__('Menus').'</a>').'</p>';
 	$helpArr[] = array(
 		'id'		=> 'whats-next',
 		'title'		=> __('What&#8217;s next?', W3P_ACPT_DOMAIN),
@@ -253,61 +252,94 @@ function w3p_acpt_contextual_help($help, $screen_id, $screen) {
 
 /* Metabox for CPTs in Apperance -> Menus */
 add_action('admin_head-nav-menus.php', 'w3p_acpt_add_nav_menu_metabox');
-function w3p_acpt_add_nav_menu_metabox() {
-	$post_types = get_post_types( array( 'public' => true, 'show_in_nav_menus' => true, 'has_archive' => true ), 'object' );
+function w3p_acpt_add_nav_menu_metabox( $object ) {
+	$post_types = get_post_types( array( 'show_in_nav_menus' => true, 'has_archive' => true ), 'object' );
 	if ( count($post_types) )
-		add_meta_box( 'post-types', __('Post types', W3P_ACPT_DOMAIN), 'w3p_acpt_nav_menu_metabox', 'nav-menus', 'side', 'default', $post_types );
+		add_meta_box( 'add-cpt-archive', __('Post types', W3P_ACPT_DOMAIN), 'w3p_acpt_nav_menu_metabox', 'nav-menus', 'side', 'default' );
+	return $object;
 }
 
 
 /* The metabox */
-function w3p_acpt_nav_menu_metabox( $object, $post_types ) {
-	global $_nav_menu_placeholder, $nav_menu_selected_id, $locale;
-	$types = $post_types['args'];
-	?>
-	<div id="post-types" class="posttypesdiv">
+function w3p_acpt_nav_menu_metabox() {
+	global $nav_menu_selected_id, $locale;
+	$post_types = get_post_types( array( 'show_in_nav_menus' => true, 'has_archive' => true ), 'object' );
 
-		<div id="tabs-panel-post-types-all" class="tabs-panel tabs-panel-view-all tabs-panel-active" style="border-style:solid;border-width:1px;overflow:auto;padding:.5em .9em;">
-			<ul id="post-typeschecklist" class="list:post-types categorychecklist form-no-clear form-no-clear" style="margin:0">
+	foreach ( $post_types as &$post_type ) {
+		$post_type->db_id = 0;
+		$post_type->object = 'cpt-archive';
+		$post_type->object_id = $post_type->name;
+		$post_type->menu_item_parent = 0;
+		$post_type->type = $post_type->name;
+		$post_type->title = $post_type->labels->name;
+		$post_type->url = '';
+		$post_type->target = '';
+		$post_type->attr_title = '';
+		$post_type->classes = array();
+		$post_type->xfn = '';
+	}
+
+	$walker = new Walker_Nav_Menu_Checklist( array() );
+
+	?>
+	<div id="cpt-archive" class="cpt-archivediv">
+		<div id="cpt-archive-all" class="tabs-panel tabs-panel-view-all tabs-panel-active" style="height:auto;max-height:205px;border-style:solid;border-width:1px;overflow:auto;padding:.5em .9em;">
+			<ul id="ctp-archivechecklist" class="list:cpt-archive categorychecklist form-no-clear" style="margin:0;">
 				<?php
-				$old_locale = $locale;
-				if ( class_exists('SitePress') ) {		// WPML support : if we're building a menu in another language, switch to this one
-					global $sitepress;
-					$locale = $sitepress->get_locale($sitepress->get_current_language());
-				}
-				$checked = isset($_GET['post-types-tab'], $_GET['selectall']) && $_GET['post-types-tab'] == 'all' && $_GET['selectall'] == 1 ? ' checked="checked"' : '';
-				foreach ( $types as $type => $obj ) {
-					$_nav_menu_placeholder = ( 0 > $_nav_menu_placeholder ) ? intval($_nav_menu_placeholder) - 1 : -1; ?>
-					<li>
-						<label class="menu-item-title">
-							<input type="checkbox" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-object-id]" class="menu-item-checkbox" value="<?php echo $type; ?>"<?php echo $checked; ?>/> <?php echo $obj->labels->name; ?>
-						</label>
-						<input type="hidden" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-object]" class="menu-item-object" value="post-type"/>
-						<input type="hidden" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-type]" class="menu-item-type" value="custom"/>
-						<input type="hidden" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-title]" class="menu-item-title" value="<?php echo $obj->labels->name; ?>"/>
-						<input type="hidden" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-url]" class="menu-item-url" value="<?php echo get_post_type_archive_link( $type ); ?>"/>
-					</li>
-					<?php
-				}
-				$locale = $old_locale;					// Back to the administration language
+				$checkbox_items = walk_nav_menu_tree( array_map('wp_setup_nav_menu_item', $post_types), 0, (object) array( 'walker' => $walker) );
+
+				if ( isset( $_REQUEST['cpt-archive-tab'] ) && $_REQUEST['cpt-archive-tab'] == 'all' && ! empty( $_REQUEST['selectall'] ) )
+					$checkbox_items = preg_replace('/(type=(.)checkbox(\2))/', '$1 checked=$2checked$2', $checkbox_items);
+				echo $checkbox_items;
 				?>
 			</ul>
 		</div><!-- /.tabs-panel -->
-
-		<p class="button-controls">
-			<span class="list-controls">
-				<a href="<?php echo esc_url(add_query_arg( array( 'selectall' => 1, 'post-types-tab' => 'all' ) )); ?>#post-types" class="select-all"><?php _e('Select All'); ?></a>
-			</span>
-
-			<span class="add-to-menu">
-				<img class="waiting" src="<?php echo esc_url( admin_url( 'images/wpspin_light.gif' ) ); ?>" alt="" />
-				<input type="submit"<?php disabled( $nav_menu_selected_id, 0 ); ?> class="button-secondary submit-add-to-menu" value="<?php esc_attr_e('Add to Menu'); ?>" name="add-post-types-menu-item" id="submit-post-types" />
-			</span>
-		</p>
-
 	</div>
+
+	<p class="button-controls">
+		<span class="list-controls">
+			<a href="<?php echo esc_url(add_query_arg( array( 'selectall' => 1, 'cpt-archive-tab' => 'all' ) )); ?>#cpt-archive" class="select-all"><?php _e('Select All'); ?></a>
+		</span>
+
+		<span class="add-to-menu">
+			<img class="waiting" src="<?php echo esc_url( admin_url( 'images/wpspin_light.gif' ) ); ?>" alt="" />
+			<input type="submit"<?php disabled( $nav_menu_selected_id, 0 ); ?> class="button-secondary submit-add-to-menu" value="<?php esc_attr_e('Add to Menu'); ?>" name="add-ctp-archive-menu-item" id="submit-cpt-archive" />
+		</span>
+	</p>
 	<?php
 }
+
+
+/* Modify the "type_label" + add the "Original" link url */
+add_filter( 'wp_setup_nav_menu_item', 'w3p_acpt_nav_menu_type_label' );
+function w3p_acpt_nav_menu_type_label( $menu_item ) {
+	if ( isset($menu_item->object) && $menu_item->object == 'cpt-archive' ) {
+		$menu_item->type_label = __( 'Archive' );
+		$menu_item->url = get_post_type_archive_link( $menu_item->type );		// Adding this url is useless since we can't add the link name
+	}
+	return $menu_item;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ?>

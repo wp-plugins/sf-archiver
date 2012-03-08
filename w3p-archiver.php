@@ -3,7 +3,7 @@
 Plugin Name: SF Archiver
 Plugin URI: http://www.screenfeed.fr/archi/
 Description: A simple way to display archive pages for your custom post types
-Version: 1.0
+Version: 1.1
 Author: Grégory Viguier
 Author URI: http://www.screenfeed.fr/greg/
 License: GPLv3
@@ -12,7 +12,7 @@ Require: WordPress 3.3+
 
 define( 'W3P_ACPT_PLUGIN_NAME',	'SF Archiver' );
 define( 'W3P_ACPT_PAGE_NAME',	'w3p_acpt_config' );
-define( 'W3P_ACPT_VERSION',		'1.0' );
+define( 'W3P_ACPT_VERSION',		'1.1' );
 define( 'W3P_ACPT_DOMAIN',		'w3p-acpt' );
 define( 'W3P_ACPT_FILE',		__FILE__ );
 define( 'W3P_ACPT_DIRNAME',		basename( dirname( W3P_ACPT_FILE ) ) );
@@ -33,6 +33,20 @@ if (is_admin()) {
 	include_once(W3P_ACPT_PLUGIN_DIR.'/admin/w3p-acpt-admin.inc.php');								// Admin
 
 } else {
+
+	add_filter( 'wp_get_nav_menu_items', 'cpt_archive_menu_filter', 10, 3 );						// Alter the URL for cpt-archive objects
+	function cpt_archive_menu_filter( $items, $menu, $args ) {
+		foreach ( $items as &$item ) {
+			if ( $item->object != 'cpt-archive' )
+				continue;
+			$item->url = get_post_type_archive_link( $item->type );
+			if ( get_query_var( 'post_type' ) == $item->type ) {
+				$item->classes []= 'current-menu-item';
+				$item->current = true;
+			}
+		}
+		return $items;
+	}
 
 	add_action('pre_get_posts', 'w3p_acpt_ppp');													// Posts per page limit and CPTs on posts page
 	function w3p_acpt_ppp($q) {

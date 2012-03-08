@@ -34,10 +34,15 @@ They're probably not public.
 Eventually, check out [my blog](http://www.screenfeed.fr/archi/) for more infos or tips (sorry guys, it's in french).
 
 == Screenshots ==
-1. screenshot-1.png
-2. screenshot-2.png
+1. The settings page
+2. The meta box in nav menu admin page
 
 == Changelog ==
+
+= 1.1 =
+* 2012/03/08
+* Meta box rebuild in nav menu admin page. Delete your old archive links in your menus and add them again. Now you won't need to change them again if you change the archives slug.
+* Minor changes in French translation.
 
 = 1.0 =
 * 2012/02/24
@@ -46,3 +51,46 @@ Eventually, check out [my blog](http://www.screenfeed.fr/archi/) for more infos 
 == Upgrade Notice ==
 
 Nothing special
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
