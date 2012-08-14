@@ -3,7 +3,7 @@
 Plugin Name: SF Archiver
 Plugin URI: http://www.screenfeed.fr/archi/
 Description: A simple way to display archive pages for your custom post types
-Version: 1.1
+Version: 1.1.1
 Author: Grégory Viguier
 Author URI: http://www.screenfeed.fr/greg/
 License: GPLv3
@@ -12,7 +12,7 @@ Require: WordPress 3.3+
 
 define( 'W3P_ACPT_PLUGIN_NAME',	'SF Archiver' );
 define( 'W3P_ACPT_PAGE_NAME',	'w3p_acpt_config' );
-define( 'W3P_ACPT_VERSION',		'1.1' );
+define( 'W3P_ACPT_VERSION',		'1.1.1' );
 define( 'W3P_ACPT_DOMAIN',		'w3p-acpt' );
 define( 'W3P_ACPT_FILE',		__FILE__ );
 define( 'W3P_ACPT_DIRNAME',		basename( dirname( W3P_ACPT_FILE ) ) );
@@ -71,7 +71,7 @@ if (is_admin()) {
 
 			$pt = $q->query_vars['post_type'];
 			$sets = get_option('_w3p_acpt');
-	
+
 			if ( isset($sets[$pt]['enabled'], $sets[$pt]['ppp']) && $sets[$pt]['enabled'] && $sets[$pt]['ppp'] )
 				$q->query_vars['posts_per_page'] = $sets[$pt]['ppp'];
 
@@ -141,6 +141,12 @@ function w3p_acpt_archive_cpt($post_type, $args) {
 			$args->rewrite['pages'] = true;
 		if ( ! isset( $args->rewrite['feeds'] ) || ! $args->has_archive )
 			$args->rewrite['feeds'] = (bool) $args->has_archive;
+		if ( ! isset( $args->rewrite['ep_mask'] ) ) {
+			if ( isset( $args->permalink_epmask ) )
+				$args->rewrite['ep_mask'] = $args->permalink_epmask;
+			else
+				$args->rewrite['ep_mask'] = EP_PERMALINK;
+		}
 
 		if ( $args->hierarchical )
 			$wp_rewrite->add_rewrite_tag("%$post_type%", '(.+?)', $args->query_var ? "{$args->query_var}=" : "post_type=$post_type&name=");
@@ -171,7 +177,7 @@ function w3p_acpt_archive_cpt($post_type, $args) {
 				$wp_rewrite->add_rule( "{$archive_slug}/{$wp_rewrite->pagination_base}/([0-9]{1,})/?$", "index.php?post_type=$post_type" . '&paged=$matches[1]', 'top' );
 		}
 
-		$wp_rewrite->add_permastruct($post_type, "{$args->rewrite['slug']}/%$post_type%", $args->rewrite['with_front'], $args->permalink_epmask);
+		$wp_rewrite->add_permastruct($post_type, "{$args->rewrite['slug']}/%$post_type%", $args->rewrite );
 
 		// Great, stop the copy/paste and just add the final touch. Easy, isn't it? ;)
 		$wp_post_types[$post_type] = $args;
