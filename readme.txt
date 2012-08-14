@@ -39,6 +39,10 @@ Eventually, check out [my blog](http://www.screenfeed.fr/archi/) for more infos 
 
 == Changelog ==
 
+= 1.1.1 =
+* 2012/08/14
+* Small bugfix due to some core changes in WP 3.4.1.
+
 = 1.1 =
 * 2012/03/08
 * Meta box rebuild in nav menu admin page. Delete your old archive links in your menus and add them again. Now you won't need to change them again if you change the archives slug.
