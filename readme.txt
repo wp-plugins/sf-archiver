@@ -3,7 +3,7 @@ Contributors: GregLone
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=UBY2MY2J4YB7J&item_number=SF-Archiver
 Tags: content, archive, post types
 Requires at least: 3.3
-Tested up to: 3.3.1
+Tested up to: 3.5RC-3
 Stable tag: trunk
 License: GPLv3
 
@@ -35,9 +35,15 @@ Eventually, check out [my blog](http://www.screenfeed.fr/archi/) for more infos 
 
 == Screenshots ==
 1. The settings page
-2. The meta box in nav menu admin page
+2. The meta box in the Menus admin page
 
 == Changelog ==
+
+= 1.1.2 =
+* 2012/12/04
+* Small change for WP 3.5 compatibility.
+* Code improvements.
+* Use string as domain for gettext.
 
 = 1.1.1 =
 * 2012/08/14
@@ -55,46 +61,5 @@ Eventually, check out [my blog](http://www.screenfeed.fr/archi/) for more infos 
 == Upgrade Notice ==
 
 Nothing special
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

@@ -1,29 +1,30 @@
 <?php
 /*
-Plugin Name: SF Archiver
-Plugin URI: http://www.screenfeed.fr/archi/
-Description: A simple way to display archive pages for your custom post types
-Version: 1.1.1
-Author: Grégory Viguier
-Author URI: http://www.screenfeed.fr/greg/
-License: GPLv3
-Require: WordPress 3.3+
+ * Plugin Name: SF Archiver
+ * Plugin URI: http://www.screenfeed.fr/archi/
+ * Description: A simple way to display archive pages for your custom post types
+ * Version: 1.1.2
+ * Author: Grégory Viguier
+ * Author URI: http://www.screenfeed.fr/greg/
+ * License: GPLv3
+ * Require: WordPress 3.3+
+ * Text Domain: w3p-acpt
+ * Domain Path: /languages/
 */
 
 define( 'W3P_ACPT_PLUGIN_NAME',	'SF Archiver' );
 define( 'W3P_ACPT_PAGE_NAME',	'w3p_acpt_config' );
-define( 'W3P_ACPT_VERSION',		'1.1.1' );
-define( 'W3P_ACPT_DOMAIN',		'w3p-acpt' );
+define( 'W3P_ACPT_VERSION',		'1.1.2' );
 define( 'W3P_ACPT_FILE',		__FILE__ );
 define( 'W3P_ACPT_DIRNAME',		basename( dirname( W3P_ACPT_FILE ) ) );
-define( 'W3P_ACPT_PLUGIN_URL',	trailingslashit( WP_PLUGIN_URL ) . W3P_ACPT_DIRNAME );
-define( 'W3P_ACPT_PLUGIN_DIR',	trailingslashit( WP_PLUGIN_DIR ) . W3P_ACPT_DIRNAME );
+define( 'W3P_ACPT_PLUGIN_URL',	plugin_dir_url( W3P_ACPT_FILE ) );
+define( 'W3P_ACPT_PLUGIN_DIR',	plugin_dir_path( W3P_ACPT_FILE ) );
 
 
 /* Language support */
 add_action( 'init', 'w3p_acpt_lang_init' );
 function w3p_acpt_lang_init() {
-	load_plugin_textdomain( W3P_ACPT_DOMAIN, false, W3P_ACPT_DIRNAME . '/languages/' );
+	load_plugin_textdomain( 'w3p-acpt', false, W3P_ACPT_DIRNAME . '/languages/' );
 }
 
 
@@ -106,7 +107,7 @@ if (is_admin()) {
 		$feed_type = feed_content_type();
 		foreach ( $sets as $pt => $set ) {
 			if ( isset($set['enabled'], $set['rss']) && $set['enabled'] && $set['rss'] && isset($wp_post_types[$pt]->label) ) {
-				$feed_title = apply_filters( 'post_type_feed_title', __( 'Subscribe to %s via RSS', W3P_ACPT_DOMAIN ), $pt );
+				$feed_title = apply_filters( 'post_type_feed_title', __( 'Subscribe to %s via RSS', 'w3p-acpt' ), $pt );
 				echo '<link rel="alternate" type="'.$feed_type.'" title="'.sprintf( esc_html($feed_title), $wp_post_types[$pt]->label ).'" href="'.get_post_type_archive_feed_link($pt).'" />';
 			}
 		}
@@ -183,5 +184,3 @@ function w3p_acpt_archive_cpt($post_type, $args) {
 		$wp_post_types[$post_type] = $args;
 	}
 }
-
-?>
