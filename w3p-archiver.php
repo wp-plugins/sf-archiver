@@ -29,11 +29,11 @@ function w3p_acpt_lang_init() {
 
 
 /* Init */
-if (is_admin()) {
+if ( is_admin() && !defined('DOING_AJAX') ) {
 
 	include_once(W3P_ACPT_PLUGIN_DIR.'/admin/w3p-acpt-admin.inc.php');								// Admin
 
-} else {
+} elseif ( !is_admin() && !defined( 'XMLRPC_REQUEST' ) && !defined( 'DOING_CRON' ) ) {
 
 	add_filter( 'wp_get_nav_menu_items', 'cpt_archive_menu_filter', 10, 3 );						// Alter the URL for cpt-archive objects
 	function cpt_archive_menu_filter( $items, $menu, $args ) {
