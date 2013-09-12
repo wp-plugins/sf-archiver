@@ -1,4 +1,7 @@
 <?php
+if( !defined( 'ABSPATH' ) )
+	die( 'Cheatin\' uh?' );
+
 
 /* Settings for the administration page */
 add_action( 'admin_init', 'w3p_acpt_register_settings' );
@@ -325,3 +328,4 @@ function w3p_acpt_nav_menu_type_label( $menu_item ) {
 	return $menu_item;
 }
 
+/**/

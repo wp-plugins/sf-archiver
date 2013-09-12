@@ -3,7 +3,7 @@ Contributors: GregLone
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=UBY2MY2J4YB7J&item_number=SF-Archiver
 Tags: content, archive, post types
 Requires at least: 3.3
-Tested up to: 3.5RC-3
+Tested up to: 3.6.1
 Stable tag: trunk
 License: GPLv3
 
@@ -38,6 +38,10 @@ Eventually, check out [my blog](http://www.screenfeed.fr/archi/) for more infos 
 2. The meta box in the Menus admin page
 
 == Changelog ==
+
+= 1.1.3 =
+* 2013/09/13
+* Small security fix.
 
 = 1.1.2 =
 * 2012/12/04

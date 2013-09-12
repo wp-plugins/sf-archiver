@@ -3,14 +3,18 @@
  * Plugin Name: SF Archiver
  * Plugin URI: http://www.screenfeed.fr/archi/
  * Description: A simple way to display archive pages for your custom post types
- * Version: 1.1.2
+ * Version: 1.1.3
  * Author: Grégory Viguier
  * Author URI: http://www.screenfeed.fr/greg/
  * License: GPLv3
- * Require: WordPress 3.3+
+ * License URI: http://www.screenfeed.fr/gpl-v3.txt
+ * Require: WordPress 3.3
  * Text Domain: w3p-acpt
  * Domain Path: /languages/
 */
+
+if( !defined( 'ABSPATH' ) )
+	die( 'Cheatin\' uh?' );
 
 define( 'W3P_ACPT_PLUGIN_NAME',	'SF Archiver' );
 define( 'W3P_ACPT_PAGE_NAME',	'w3p_acpt_config' );
@@ -184,3 +188,4 @@ function w3p_acpt_archive_cpt($post_type, $args) {
 		$wp_post_types[$post_type] = $args;
 	}
 }
+/**/
