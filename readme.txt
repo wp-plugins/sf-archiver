@@ -1,11 +1,11 @@
 === SF Archiver ===
 Contributors: GregLone
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=UBY2MY2J4YB7J&item_number=SF-Archiver
 Tags: content, archive, post types
 Requires at least: 3.3
-Tested up to: 3.6.1
+Tested up to: 3.7
 Stable tag: trunk
 License: GPLv3
+License URI: http://www.screenfeed.fr/gpl-v3.txt
 
 A simple way to display archive pages for your custom post types
 
