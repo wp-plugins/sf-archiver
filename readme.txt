@@ -2,7 +2,7 @@
 Contributors: GregLone
 Tags: content, archive, post types
 Requires at least: 3.3
-Tested up to: 3.7
+Tested up to: 4.0
 Stable tag: trunk
 License: GPLv3
 License URI: http://www.screenfeed.fr/gpl-v3.txt
