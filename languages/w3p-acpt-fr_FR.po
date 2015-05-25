@@ -1,0 +1,141 @@
+# LANGUAGE French translation for SF Archive for custom post types plugin for WordPress.
+# Copyright (C) 2011 Grégory Viguier
+# Grégory Viguier.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: w3p-acpt 0.3\n"
+"Report-msgid -Bugs-To: http://scri.in/acpt/\n"
+"POT-Creation-Date: 2012-02-15 16:25+0100\n"
+"PO-Revision-Date: 2012-12-04 20:41+0100\n"
+"Last-Translator: Grégory Viguier <screenfeed@gmail.com>\n"
+"Language-Team: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n>1;\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"Language: fr_FR\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: w3p-archive-for-cpt.php
+msgid  "A simple way to display archive pages for your custom post types"
+msgstr "Une manière simple d'afficher les pages d'archive de vos contenus personnalisés"
+
+msgid  "Subscribe to %s via RSS"
+msgstr "Souscrire à %s via RSS"
+
+#: w3p-acpt-admin.inc.php
+msgid  "Here you can choose to enable the archive capability for the public custom post types."
+msgstr "Ici vous pouvez choisir d&#8217;activer la capacité d&#8217;archive pour les types de contenu personnalisé publics."
+
+msgid  "Wait, where are my custom post types?! Why did you installed me if you don&#8217;t have custom post types? ;)"
+msgstr "Hé, où sont mes types de contenu personnalisé? Pourquoi m&#8217;avoir installé si vous n&#8217;avez pas de types de contenu personnalisé? ;)"
+
+msgid  "This <abbr title=\"Custom Post Type\">CPT</abbr> already has an archive page."
+msgstr "Ce <abbr title=\"Custom Post Type : type de contenu personnalisé\">CPT</abbr> a déjà une page d&#8217;archive."
+
+msgid  "Enable archive page"
+msgstr "Activer la page d&#8217;archive"
+
+msgid  "Add the RSS feed <code>&lt;link/&gt;</code> in head"
+msgstr "Ajouter le <code>&lt;link/&gt;</code> du flux RSS dans l&#8217;entête de page"
+
+msgid  "Feed url"
+msgstr "Url du flux"
+
+msgid  "%s per page:"
+msgstr "%s par page :"
+
+msgid  "Custom archive slug:"
+msgstr "<abbr title=\"Fin de l&#8217;url\">Slug</abbr> personnalisé de l&#8217;archive :"
+
+msgid  "default value:"
+msgstr "valeur par défaut :"
+
+msgid  "Go to the archive page"
+msgstr "Aller sur la page d&#8217;archive"
+
+msgid  "Custom posts slug:"
+msgstr "Slug personnalisé des articles :"
+
+msgid  "Add this post type to the posts page"
+msgstr "Ajouter ce type de contenu à la page des articles"
+
+msgid  "Add this post type to the main RSS feed"
+msgstr "Ajouter ce type de contenu au flux RSS principal"
+
+msgid  "Panic room: delete all the plugin settings"
+msgstr "C&#8217;est le drame : effacer tous les réglages du plugin"
+
+#: Help
+msgid  "Each post type must have the &#171;&#160;Archive capability&#160;&#187; if you want to link to a page listing them."
+msgstr "Chaque type de contenu doit avoir la &#171;&#160;capacité d&#8217;archive&#160;&#187; si vous souhaitez faire un lien vers une page les listant."
+
+msgid  "To enable the archive page, tick the &#171;&#160;Enable archive page&#160;&#187; checkbox in front of your custom post type. If the custom post type already has this capability, the checkbox won&#8217; show up."
+msgstr "Pour activer la page d&#8217;archive, cocher la case &#171;&#160;Activer la page d&#8217;archive&#160;&#187; devant votre type de contenu personnalisé. Si le type de contenu personnalisé a déjà cette capacité, la case à cocher n&#8217;est pas affichée."
+
+msgid  "Archive page"
+msgstr "Page d&#8217;archive"
+
+msgid  "By enabling the &#171;&#160;Archive capability&#160;&#187;, a RSS feed is also created. If you want to add this feed to your site, tick the checkbox and a <code>&lt;link/&gt;</code> tag will be inserted in the head of your site. But first, you should look if it isn&#8217;t already there."
+msgstr "En activant la &#171;&#160;capacité d&#8217;archive&#160;&#187;, un flux RSS est également créé. Si vous souhaitez ajouter ce flux à votre site, cochez la case et une balise <code>&lt;link/&gt;</code> sera insérée dans l'entête de votre site. Mais d&#8217;abord vous devriez vérifier que cette balise n&#8217;est pas déjà en place."
+
+msgid  "The plugin also gives you an url to this feed: just copy the &#171;&#160;Feed url&#160;&#187; link url. You can also get this url by using the appropriate WordPress function:<br/> %s."
+msgstr "Le plugin vous donne aussi une url pour ce flux : vous n'avez qu&#8217;à copier l&#8217;url de ce lien &#171;&#160;Url du flux&#160;&#187;. Vous pouvez aussi utiliser la fonction WordPress adéquate :<br/> %s"
+
+msgid  "RSS feed"
+msgstr "Flux RSS"
+
+msgid  "You can customize the number of posts per page for each custom post type. Otherwise, this number will be the same than what you specified for your normal posts: %d."
+msgstr "Vous pouvez personnaliser le nombre d&#8217;articles par page pour chacun de vos contenus personnalisés. Sinon, ce nombre sera égal à celui précisé pour vos articles classiques : %d."
+
+msgid  "Hint: -1 to display all of them in the same page."
+msgstr "Astuce : -1 pour les montrer tous sur la même page."
+
+msgid  "Posts per page"
+msgstr "Articles par page"
+
+msgid  "You can even specify a new slug for the archive page or the single pages."
+msgstr "Vous pouvez même préciser un nouveau <abbr title=\"fin de l&#8217;url\">slug</abbr> pour la page d&#8217;archive ou les articles."
+
+msgid  "Hint: you can use sub-slugs like &#8217;sub-slug/slug&#8217;, &#8217;collections/summer/tee-shirts&#8217;..."
+msgstr "Astuce : vous pouvez utiliser des sous-slugs comme &#8217;sous-slug/slug&#8217;, &#8217;collection/été/tee-shirts&#8217;..."
+
+msgid  "Don&#8217;t forget that the RSS url change at the same time."
+msgstr "N&#8217;oubliez pas que l&#8217;url du flux RSS change en même temps."
+
+msgid  "Slugs"
+msgstr "Slugs"
+
+msgid  "You can add your custom post types to your posts page, with your normal posts. Just tick the &#171;&#160;Add this post type to the posts page&#160;&#187; checkbox, the archive page is still available."
+msgstr "Vous pouvez ajouter vos types de contenu personnalisé sur votre page d&#8217;articles. Cochez juste la case &#171;&#160;Ajouter ce type de contenu à la page des articles&#160;&#187;, la page d&#8217;archive reste disponible."
+
+msgid  "You can do the same thing with the main RSS feed: you can add your custom post types to your normal posts in the main RSS feed by ticking the &#171;&#160;Add this post type to the main RSS feed&#160;&#187; checkbox."
+msgstr "Vous pouvez faire la même chose avec le flux RSS principal : vous pouvez ajouter vos types de contenu personnalisé au flux RSS principal en cochant la case &#171;&#160;Ajouter ce type de contenu au flux RSS principal&#160;&#187;."
+
+msgid  "Posts page and main RSS feed"
+msgstr "Page des articles et flux RSS principal"
+
+msgid  "Go to Appearance -> %s, look for the box called &#171;&#160;Post types&#160;&#187;, add your custom post type to your menu :)"
+msgstr "Allez dans Apparence -> %s, cherchez la boîte &#171;&#160;Types de contenu&#160;&#187;, ajoutez votre type de contenu personnalisé au menu :)"
+
+msgid  "What&#8217;s next?"
+msgstr "Et après?"
+
+msgid  "This plugin was created by %1$s and reviewed by %2$s for a security check."
+msgstr "Ce plugin a été créé par %1$s et vérifié par %2$s au niveau sécurité."
+
+msgid  "Plugin icon by %s."
+msgstr "Icône du plugin par %s."
+
+msgid  "Credits"
+msgstr "Crédits"
+
+msgid  "My blog (french)"
+msgstr "Mon blog"
+
+msgid  "Post types"
+msgstr "Types de contenu"
+
