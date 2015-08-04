@@ -3,7 +3,7 @@
  * Plugin Name: SF Archiver
  * Plugin URI: http://www.screenfeed.fr/archi/
  * Description: A simple way to manage archive pages for your Custom Post Types.
- * Version: 2.0
+ * Version: 2.0.1
  * Author: Grégory Viguier
  * Author URI: http://www.screenfeed.fr/greg/
  * License: GPLv3
@@ -25,7 +25,7 @@ if ( version_compare( $GLOBALS['wp_version'], '3.5-alpha', '<' ) ) {
 /* !CONSTANTS ====================================================================== */
 /*-----------------------------------------------------------------------------------*/
 
-define( 'SFAR_VERSION', '2.0' );
+define( 'SFAR_VERSION', '2.0.1' );
 define( 'SFAR_FILE',    __FILE__ );
 
 

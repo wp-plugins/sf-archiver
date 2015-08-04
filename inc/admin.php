@@ -56,7 +56,7 @@ function sfar_print_post_type_archive_link_script() {
 	$href = $typenow === 'post' ? get_page_for_posts( true ) : get_post_type_archive_link( $typenow );
 
 	echo '<script>jQuery(document).ready( function( $ ) {
-	$( ".add-new-h2" ).first().before( "<a class=\"post-type-archive-link dashicons dashicons-external\" href=\"' . esc_url( $href ) . '\" style=\"vertical-align: middle; margin-right: 8px;\"><span class=\"screen-reader-text\">' . __( 'Visit Site' ) . '</span></a>" );
+	$( ".add-new-h2, .page-title-action" ).first().before( "<a class=\"post-type-archive-link dashicons dashicons-external\" href=\"' . esc_url( $href ) . '\" style=\"vertical-align: middle; margin-right: 8px;\"><span class=\"screen-reader-text\">' . __( 'Visit Site' ) . '</span></a>" );
 } );</script>' . "\n";
 }
 

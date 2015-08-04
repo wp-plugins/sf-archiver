@@ -2,7 +2,7 @@
 Contributors: GregLone
 Tags: content, archive, post types
 Requires at least: 3.5
-Tested up to: 4.2.2
+Tested up to: 4.3-RC2
 Stable tag: trunk
 License: GPLv3
 License URI: http://www.screenfeed.fr/gpl-v3.txt
@@ -43,6 +43,10 @@ Eventually, check out [my blog](http://www.screenfeed.fr/archi/) for more infos 
 3. A link to the post type archive page.
 
 == Changelog ==
+
+= 2.0.1 =
+* 2015/08/05
+* New: ready for the new WordPress 4.3 headings in admin screens.
 
 = 2.0 =
 * 2015/05/25
